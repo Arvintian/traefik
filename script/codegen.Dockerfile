@@ -8,6 +8,7 @@ USER ${UID}:${GID}
 
 ARG KUBE_VERSION
 
+ENV GOPROXY=https://goproxy.cn,direct
 RUN go install k8s.io/code-generator/cmd/defaulter-gen@$KUBE_VERSION
 RUN go install k8s.io/code-generator/cmd/client-gen@$KUBE_VERSION
 RUN go install k8s.io/code-generator/cmd/lister-gen@$KUBE_VERSION

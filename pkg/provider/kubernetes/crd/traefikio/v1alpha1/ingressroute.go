@@ -123,6 +123,8 @@ type LoadBalancerSpec struct {
 	// The Kubernetes Service itself does load-balance to the pods.
 	// By default, NativeLB is false.
 	NativeLB bool `json:"nativeLB,omitempty"`
+	// Healthcheck defines health checks for the service.
+	HealthCheck *dynamic.ServerHealthCheck `json:"healthCheck,omitempty"`
 }
 
 // Service defines an upstream HTTP service to proxy traffic to.

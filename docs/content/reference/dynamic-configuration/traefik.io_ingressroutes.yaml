@@ -98,6 +98,35 @@ spec:
                         description: Service defines an upstream HTTP service to proxy
                           traffic to.
                         properties:
+                          healthCheck:
+                            description: Healthcheck defines health checks for the
+                              service.
+                            properties:
+                              followRedirects:
+                                type: boolean
+                              headers:
+                                additionalProperties:
+                                  type: string
+                                type: object
+                              hostname:
+                                type: string
+                              interval:
+                                description: TODO change string to ptypes.Duration
+                                type: string
+                              method:
+                                type: string
+                              path:
+                                type: string
+                              port:
+                                type: integer
+                              scheme:
+                                type: string
+                              timeout:
+                                description: TODO change string to ptypes.Duration
+                                type: string
+                            required:
+                            - followRedirects
+                            type: object
                           kind:
                             description: Kind defines the kind of the Service.
                             enum:
