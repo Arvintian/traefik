@@ -20,7 +20,6 @@ import (
 	"github.com/traefik/traefik/v2/pkg/job"
 	"github.com/traefik/traefik/v2/pkg/log"
 	"github.com/traefik/traefik/v2/pkg/provider"
-	containousv1alpha1 "github.com/traefik/traefik/v2/pkg/provider/kubernetes/crd/traefikcontainous/v1alpha1"
 	traefikv1alpha1 "github.com/traefik/traefik/v2/pkg/provider/kubernetes/crd/traefikio/v1alpha1"
 	"github.com/traefik/traefik/v2/pkg/provider/kubernetes/k8s"
 	"github.com/traefik/traefik/v2/pkg/safe"
@@ -1721,7 +1720,7 @@ func isTraefikService(ref gatev1alpha2.BackendRef) bool {
 		return false
 	}
 
-	return (*ref.Group == containousv1alpha1.GroupName || *ref.Group == traefikv1alpha1.GroupName) && *ref.Kind == kindTraefikService
+	return *ref.Group == traefikv1alpha1.GroupName && *ref.Kind == kindTraefikService
 }
 
 func isInternalService(ref gatev1alpha2.BackendRef) bool {

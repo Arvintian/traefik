@@ -33,7 +33,6 @@ import (
 
 	versioned "github.com/traefik/traefik/v2/pkg/provider/kubernetes/crd/generated/clientset/versioned"
 	internalinterfaces "github.com/traefik/traefik/v2/pkg/provider/kubernetes/crd/generated/informers/externalversions/internalinterfaces"
-	traefikcontainous "github.com/traefik/traefik/v2/pkg/provider/kubernetes/crd/generated/informers/externalversions/traefikcontainous"
 	traefikio "github.com/traefik/traefik/v2/pkg/provider/kubernetes/crd/generated/informers/externalversions/traefikio"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
@@ -262,12 +261,7 @@ type SharedInformerFactory interface {
 	// client.
 	InformerFor(obj runtime.Object, newFunc internalinterfaces.NewInformerFunc) cache.SharedIndexInformer
 
-	TraefikContainous() traefikcontainous.Interface
 	Traefik() traefikio.Interface
-}
-
-func (f *sharedInformerFactory) TraefikContainous() traefikcontainous.Interface {
-	return traefikcontainous.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Traefik() traefikio.Interface {
